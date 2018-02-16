@@ -1,0 +1,88 @@
+% ------------------------------------------------------------------------------------------------ %
+% Erwartungswert
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Erwartungswert}
+
+\begin{definition}[Diskreter Erwartungswert]
+Ist $X$ diskrete Zufallsvariable mit Gewichtsfunktion $p_X$, so ist der \emph{Erwartungswert} von $X$ definiert als
+$$
+\E[X] := \sum_{x_i \in \mathcal{W}(X)} x_i p_X(x_i),
+$$
+sofern diese Reihe konvergiert.
+$$
+\E[X+Y] = \E[X] + \E[Y]
+$$
+$$
+\E[XY] = E[X]*E[Y]
+$$
+Sofern die Zv unabhängig sind.
+Beachte: Bei Varianz gilt dies nur falls Unabhängigkeit vorhanden ist. 
+\end{definition}
+Beachte: Falls die Gewichtsfunktion aufsummiert $!= 1 \Longrightarrow$ keinen Erwartungswert.$\newline$
+Falls man mehrere Zufallsvariablen hat, benutzt man für den Erwartungsert je nach dem die Randdichte. 
+
+\begin{definition}[Stetiger Erwartungswert]
+Falls $X$ eine stetige Zufallsvariable mit Dichte $f_X$ ist, dann ist der \emph{Erwartungswert} von $X$ definiert als
+$$
+\E[X] := \int_{-\infty}^\infty x f_X(x) \d x,
+$$
+falls das Integral konvergiert.
+\end{definition}
+
+\begin{theorem}[4.1]
+Sei $X$ eine diskrete Zufallsvariable mit Gewichtsfunktion $p_X$ und $Y := g(X)$, dann gilt
+$$
+\E[Y] = \E[g(X)] = \sum_{x_i \in \mathcal{W}(X)} g(x_i) p_{X}(x_i).
+$$
+Falls $X$ eine stetige Zufallsvariable mit Dichte $f_X$ ist, ist analog
+$$
+\E[Y] = \E[g(X)] = \int_{-\infty}^\infty g(x) f_X(x) \d x
+$$
+\end{theorem}
+\begin{example}[Beispiel Diamant]
+$\E[XY] = \int \int_{Q}^{} xyf_{X,Y}(x,y)dxdy \\
+=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}xy\frac{1}{2}1_{\{(x,y) \epsilon Q\}}dxdy \\
+= \frac{1}{2} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy\cdot 1_{\{-1\leq x\leq 1 und -(1-\abs{x})\leq y\leq(1-\abs{x})\}}dxdy\\
+= \frac{1}{2} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy\cdot 1_{\{-1\leq x\leq 1\}}1_{\{-(1-\abs{x})\leq y\leq(1-\abs{x})\}}dxdy\\
+= \frac{1}{2} \int_{-\infty}^{\infty}x1_{\{-1\leq x \leq 1\}}dx(\int_{-\infty}^{\infty}y1_{\{-(1-\abs{x})\leq < \leq(1-\abs{x})\}}dy)\\
+= \frac{1}{2} \int_{-1}^{1}xdx\underbrace{(\int_{-(1-\abs{x})}^{1-\abs{x}}ydy)}_{=0}$
+
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% VARIANZ UND STANDARDABWEICHUNG
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Varianz und Standardabweichung}
+
+\begin{definition}[Varianz]
+Sei $X$ eine Zufallsvariable mit $\E[X^2] < \infty$. Die \emph{Varianz} von $X$ ist definiert als
+$$
+\var[X] := \E[X^2] - (\E[X])^2
+$$
+$$
+\var[X] := \E\left[(X-\E(X))^2\right].
+$$
+$$
+\var[Y] = \var[aX+b] = a^2\var[X]
+$$
+\end{definition}
+
+\begin{note} Nach Satz 4.1 lässt sich die Varianz folgendermassen berechnen:
+$$
+\var[X] = \int_{-\infty}^\infty (x-\E[X])^2 f_X(x) \d x
+$$
+\end{note}
+
+\begin{definition}[Standardabweichung]
+Die \emph{Standardabweichung} einer Zufallsvariable $X$ ist
+$$
+\sigma_X := \sqrt{\var[X]}.
+$$
+\end{definition}
+
+
+% ------------------------------------------------------------------------------------------------ %

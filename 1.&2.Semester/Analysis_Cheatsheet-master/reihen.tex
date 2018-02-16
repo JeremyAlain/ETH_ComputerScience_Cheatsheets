@@ -1,0 +1,152 @@
+\section{Reihen}
+
+\subsection{Definitionen}
+Eine Reihe $\sum_{n = 1}^\infty a_n$ ist \underline{konvergent} mit Grenzwert
+$s$, wenn die Folge der \underline{Partialsummen} $(S_m)$, $S_m :=
+\sum_{n=1}^m a_n$ gegen $s$ konvergiert. Also wenn gilt: $S_m \to s$.
+
+\begin{definition}[$\epsilon$-Kriterium] Die Reihe konvergiert genau dann wenn gilt:
+	$\; \forall \epsilon > 0 \; \exists n_0 \in \N \; \forall m \geq n_0: \left|
+	\sum_{n=1}^m a_n - s \right| < \epsilon$
+\end{definition}
+
+\begin{definition}[Absolute Konvergenz]\index{Konvergenz}
+Eine Reihe $\sum_{n=1}^\infty a_n$ heisst absolut konvergent falls $\sum_{n=1}^\infty |a_n| < \infty$. \\
+Merke: absolute Konvergenz $\Rightarrow$ Konvergenz.
+\end{definition}
+
+\subsection{Rechenregeln Reihen}
+Für \underline{absolut konvergente} Reihen gilt:
+\[
+	\sum_{n=1}^\infty a_n = A, \sum_{n=1}^\infty b_n = B \Rightarrow
+	\sum_{n=1}^\infty (\alpha a_n + \beta b_n) = \alpha A + \beta B
+\]
+
+\subsection{Konvergenzkriterien}
+\begin{tabular}{|l|}
+\hline
+	Konvergiert $\sum_{n=1}^\infty a_n$, so ist $\lim_{n \to \infty} a_n = 0$.\\
+	Wenn also $\lim_{n \to \infty} a_n \neq 0$, so konvergiert die Reihe
+	\underline{nicht}\\
+\hline
+\end{tabular}
+
+\subsubsection{Reihen Kriterien}
+Achtung. Die nachfolgenden Kriterien sagen nur aus, ob die Reihen konvergiert
+oder nicht. Sie sagen \underline{nicht} aus, gegen was sie konvergieren!
+
+\paragraph{Quotientenkriterium}
+\[
+\left| \frac{a_{n+1}}{a_n} \right| \to q. \quad \text{Dann gilt} \begin{cases}
+q < 1 & \Rightarrow \sum_{n=1}^\infty a_n \text{ konvergiert absolut} \\
+q = 1 & \Rightarrow \text{keine Aussage}\\
+q > 1 & \Rightarrow \sum_{n=1}^\infty a_n \text{ divergiert}
+\end{cases}
+\]
+
+\paragraph{Wurzelkriterium}
+\[
+\sqrt[n]{\left | a_n \right |} \to q. \quad \text{Dann gilt} \begin{cases}
+q < 1 & \Rightarrow \sum_{n=1}^\infty a_n \text{ konvergiert absolut}\\
+q = 1 & \Rightarrow \text{keine Aussage}\\
+q > 1 & \Rightarrow \sum_{n=1}^\infty a_n \text{ divergiert}
+\end{cases}
+\]
+
+\paragraph{Leibnizkriterium}
+\vspace{-0.3cm}
+{\small
+Wenn nachfolgende Punkte alle gelten, dann konvergiert $\sum_{n=1}^\infty a_n$}
+\begin{itemize}[leftmargin=0.5cm]
+  \item $a_n$ ist alternierende Folge, dh: Vorzeichen wechselt jedes Mal
+  \item $a_n \to 0$ oder $|a_n| \to 0$
+  \item $|a_n|$ ist monoton fallend
+\end{itemize}
+
+\paragraph{Integralkriterium / Konvergenzkriterium}
+\vspace{-0.2cm}
+Sei $f$ eine monoton fallende Funktion (Folge) die nur positive Werte annimmt und auf $[a, \infty)$ mit $a \in \Z$ definiert ist, so gilt:
+\[
+	\sum_{n = a}^{\infty} f(n) \text{ konvergiert} \Leftrightarrow \int_a^{\infty} f(n) \, dn 
+	\text{ existiert (also $< \infty$)}
+\] 
+
+\paragraph{Majorantenkriterium / Konvergenzkriterium}
+\vspace{-0.2cm}
+Ist $|a_n| \leq b_n$ und $\sum_{n=1}^\infty b_n$ konvergent, so konvergiert
+$\sum_{n=1}^\infty a_n$ absolut.
+
+\paragraph{Minorantenkriterium / Divergenzkriterium}
+\vspace{-0.2cm}
+Ist $a_n \geq b_n \geq 0$ und $\sum_{n=1}^\infty b_n$ divergent, so divergiert
+$\sum_{n=1}^\infty a_n$
+\pagebreak
+\paragraph{Keine Nullfolge / Divergenzkriterium}
+\vspace{-0.2cm}
+Wenn $a_n$ keine Nullfolge ist, divergiert die Reihe! \\
+Also wenn gilt: $\lim_{n \to \infty} a_n \neq 0$ oder $\lim_{n \to \infty} |a_n| \neq 0$ \\
+Beachte: Aussage gilt nur in diese Richtung! Auch wenn $a_n$ eine Nullfolge ist, kann die Reihe immer noch divergieren!
+
+\subsection{Potenzreihe}
+\vspace{-0.2cm}
+Die Potenzreihe hat die allgemeine Form
+\[
+\sum_{n=0}^\infty a_n (x - x_0)^n
+\]
+
+$x_0$ ist der Entwicklungspunkt der Potenzreihe und $(a_n)_{n \in \N}$ eine
+beliebige Folge.
+
+\subsubsection{Konvergenzradius}
+\vspace{-0.2cm}
+Die Berechnung des Konvergenzradius ist für Potenzreihen einfacher, da der
+Faktor $(x - x_0)$ nicht analysiert werden muss. Entsprechend gilt für den
+Konvergenzradius $r$ nach Wurzel- bzw. Quotientenkriterium:\\
+$r = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{\|a_n\|}}$ bzw.
+$r = \lim_{n\to\infty} \left | \frac{a_n}{a_{n+1}} \right |$ \\
+Dann gilt:
+$
+\begin{cases}
+	|x - x_0| < r & \Rightarrow \text{ Potenzreihe konvergiert} \\
+	|x - x_0| = r & \Rightarrow \text{ keine Aussage}\\
+	|x - x_0| > r & \Rightarrow \text{ Potenzreihe divergiert}
+\end{cases}
+$
+
+\subsection{Tips zu Konvergenz/Divergenz}
+\vspace{-0.2cm}
+\begin{description}
+	\item [Quotientenkriterium] Gut für Reihen, die Fakultäten $n!$ oder Glieder der Form $a^n$ enthalten. Nicht auf Reihen anwendbar, in denen die Glieder nur Form $n^a$ haben.
+
+	\item [Wurzelkriterium] Gut in Reihen, deren Glieder Form $a^n$ enthalten. Zusammen mit Stirlingformel auch auf Fakultäten anwendbar.
+
+	\item [Leibnizkriterium] Nur für alternierende Reihen.
+
+	\item [Integralkriterium] Anwendbar auf Reihen mit monoton fallenden Folgenglieder.
+
+	\item [Majoranten- und Minorantenkriterium] Gut wenn Glieder einfach abgeschätzt werden können.
+\end{description}
+
+\subsection{Tips zu Konvergenz ausrechnen}
+\paragraph{Brüche}
+\vspace{-0.2cm}
+Um zu prüfen ob die Reihe konvergiert, ist es bei Brüchen oft sinvoll das Quotientenkriterium anzuwenden. Vorallem wenn Zähler und Nenner nur aus Produkten bestehen, oft lassen sich dann diese Faktoren wieder wegkürzen!
+\[
+	\sum_{n=1}^\infty \frac{n!}{n^n}: = \frac{(n+1)! \cdot n^n}{(n+1)^{(n+1)} \cdot n!} 
+	= \frac{(n+1) \cdot n^n}{(n+1)^{(n+1)}} = \left( \frac{n}{n+1} \right)^n = \frac{1}{e}
+\]
+
+\paragraph{Punkte einsetzen}
+\vspace{-0.2cm}
+Manchmal lässt sich die Reihe nicht direkt ausrechnen, dann kann es nützlich sein, ein paar Summenglieder auszurechnen um zu schauen wie sich die Reihe entwickelt. Im besten Fall lässt sich dann die Summe durch den Grenzwert ersetzen oder man muss noch den Grenzwert der neuen Folge berechnen. 
+\[
+	\sum_{n=2}^\infty \frac{1}{n-1} - \frac{1}{n} = \left( 1 - \frac{1}{2} + \frac{1}{2} - \frac{1}{3} + \ldots + \frac{1}{n-1} - \frac{1}{n} \right) = 1 - \frac{1}{n}
+\]
+\[
+	\lim_{n \to \infty} 1 - \frac{1}{n} = 1
+\]
+
+\paragraph{Umformen}
+\vspace{-0.2cm}
+Um eine Reihe auszurechnen kann sie oft umgeformt werden (Bsp. Konstante vor Summe) auf eine Reihe von der eine geschlossene Formel bereits bekannt ist. Siehe Formeltafel!
+\pagebreak

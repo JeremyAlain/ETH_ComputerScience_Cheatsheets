@@ -1,0 +1,139 @@
+% ------------------------------------------------------------------------------------------------ %
+% GRENZWERTSÄTZE
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Grenzwertsätze}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% GESETZ DER GROSSEN ZAHLEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Gesetz der grossen Zahlen}
+
+\begin{theorem}[Schwaches GGZ]
+Für eine Folge $X_1,X_2,\ldots$ von unkorrelierten Zufallsvariablen, die alle den Erwartungswert $\mu = \E[X_i]$ und die Varianz $\var[X_i] = \sigma^2$ haben, gilt
+$$
+\overline{X}_n := \frac{1}{n} \sum_{i=1}^n X_i
+\quad\overset{n\rightarrow\infty}{\longrightarrow}\quad
+\mu = \E[X_i].
+$$
+Das heisst
+$$
+\P\left[\lvert\overline{X}_n-\mu\rvert > \epsilon \right] \overset{n\rightarrow\infty}{\longrightarrow} 0
+\quad \forall \epsilon > 0.
+$$
+\end{theorem}
+
+\begin{theorem}[Starkes GGZ]
+Für eine Folge $X_1,X_2,\ldots$ unabhängiger Zufallsvariablen, die alle den endlichen Erwartungswert $\mu = \E[X_i]$ haben, gilt
+$$
+\overline{X}_n := \frac{1}{n} \sum_{i=1}^n X_i
+\quad\overset{n\rightarrow\infty}{\longrightarrow}\quad
+\mu = \E[X_i].
+\quad\text{P-fastsicher}
+$$
+Das heisst
+$$
+\P\left[\{\omega \in \Omega \mid \overline{X}_n(\omega) \overset{n\rightarrow\infty}{\longrightarrow} \mu\}\right] = 1.
+$$
+$$
+\lim\limits_{n->\infty}\frac{1}{n}\sum_{k=1}^{n}Y_k = \E[Y_1]\text{mit Wahrscheinlichkeit 1}$$
+\end{theorem}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% ZENTRALER GRENZWERTSATZ
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Zentraler Grenzwertsatz}
+
+\begin{theorem}[ZGS]
+Sei $X_1,X_2,\ldots$ eine Folge von i.i.d. Zufallsvariablen mit $\mu = \E[X_i]$ und $\sigma^2 = \var[X_i]$, dann gilt für die Summe $S_n = \sum_{i=1}^n X_i$\\
+$\sum_{k=0}^{n}\P[S_n = k] = \P[S_n\leq n]$
+$$
+\lim_{n\rightarrow\infty} \P\left[ \frac{S_n-n\mu}{\sigma\sqrt{n}} \leq t \right] = \Phi(t) \quad \forall t \in \R
+$$
+wobei $\Phi$  die Verteilungsfunktion von $\mathcal{N}(0,1)$ ist.
+\end{theorem}
+
+\begin{note}
+Die Summe $S_n$ hat Erwartungswert $\E[S_n] = n\mu$ und Varianz $\var[S_n] = n \sigma^2$. Die Grösse
+$$
+S_n^\ast := \frac{S_n-n\mu}{\sigma\sqrt{n}} = \frac{S_n - \E[S_n]}{\sqrt{\var[S_n]}}
+$$
+hat Erwartungswert $0$ und Varianz $1$. Für grosse $n$ gilt zudem:
+$$\begin{array}{rcl}
+\P[S_n^\ast \leq x] & \approx & \Phi(x) \\
+S_n^\ast & \overset{\text{approx.}}{\sim} & \mathcal{N}(0,1) \\
+S_n & \overset{\text{approx.}}{\sim} & \mathcal{N}(n\mu,n\sigma^2)
+\end{array}$$
+\end{note}
+\begin{example}[Wurf von Münze 100 mal, 60 mal Kopf]
+$S_{100}= \sum_{i=1}^{100}X_i\sim Bin(100,\frac{1}{2})$
+$\P[S_{100}\geq 60] = \sum_{k=60}^{100} \P[S_{100} = k] = \sum_{k=60}^{100}\binom{100}{k} (\frac{1}{2})^k(\frac{1}{2})^{100-k}$Ist aber schiwerig zu berechnen.
+$S_{100} \sim \N(100\cdot 0.5,100\cdot 0.25)$\\
+$\rightarrow \P[S_{100}\geq 60] = \P[\frac{S_{100}-50}{\sqrt{25}} \geq \frac{60-50}{5}]\\ = 1-\P[S_{100}<2] \approx 1-\phi(2)$\\
+\textbf{Kontinuitätskorrektur (genauer)}\\
+$S_n \approx N(n\cdot p,n\cdot p(1-p)) \rightarrow \P[\frac{a-np}{\sqrt{np(1-p)}}\le S_n \leq \frac{b-np}{\sqrt{np(1-p)}}] \approx \phi(\frac{b+\frac{1}{2}-np}{\sqrt{np(1-p)}})-\phi(\frac{a+\frac{1}{2}-np}{\sqrt{np(1-p)}})$
+	
+\end{example}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% CHEBYSHEV UNGLEICHUNG
+% ------------------------------------------------------------------------------------------------ %
+
+\subsection{Chebyshev-Ungleichung}
+
+Für eine Zufallsvariable $Y$ mit Erwartungswert $\mu_Y$ und Varianz $\sigma_Y^2$ und jedes $\epsilon > 0$ gilt
+$$
+\P[ \lvert Y - \mu_Y \rvert > \epsilon ] \leq \frac{\sigma_Y^2}{\epsilon^2}.
+$$
+
+% ------------------------------------------------------------------------------------------------ %
+% MONTE CARLO
+% ------------------------------------------------------------------------------------------------ %
+\subsection{Markov Ungleichung}
+Sei X eine ZF und ferner $g:W(X) \rightarrow [0,\infty)$ eine wachsende Funktion. Für jedes $c\epsilon R$ mit $g(c) \ge 0$ gilt dann:\\
+$$\P[X\geq c]\leq \frac{\E[g(x)]}{g(c)}$$
+
+\subsection{Chernoff-Schranken}
+\textbf{Momentanerzeugende Funktion einer ZF}\\
+$M_x(t) := \E[e^{tX}]$ für t$\epsilon \R$ und ist immer wohldefiniert in $[0,\infty]$,kann aber $+\infty$ werden.\\
+\textbf{Satz 5.6}\\
+Seien $X_1,..,X_n$ i.i.d ZF's, für welche die momentanerzeugende Funktion $M_x(t)$ für alle $t\epsilon \R$ gilt dann:\\
+$$\P[S_n \geq b]\leq exp(\underset{t\epsilon R}{\inf}(nlog M_x(t)-tb))$$\\
+\textbf{Satz 5.7}\\
+Seien $X_1,...X_n$ unabhänig mit $X_i \sim Be(p_i)$ und $S_n = \sum_{i=1}^{n} X_i$. Sei ferne $\mu_n := \E[S_n] = \sum_{i=1}^{n}p_i$ und $\delta \ge 0$. Dann gilt:\\
+$$
+P[S_n \geq(1+\delta)\mu_n]\leq (\frac{e^{\delta}}{(1+\delta)^{1+\delta}})^{\mu_n}
+$$
+\begin{example}[Münze]
+Wskeit dass man mehr als $(1+\delta)^{\frac{n}{2}}$ Kopf beobachtet.\\
+Chebychev: $P[S_n]\ge(1+\delta)\E[S_n]\leq \frac{1}{n\delta^2}$\\
+$\mu_n = np = \frac{n}{2} \rightarrow P[S_n \ge (1+\delta)\E[S_n]]\leq(\frac{e^{\delta}}{(1+\delta)^{1+\delta}})^{\frac{n}{2}}$\\
+Für $\delta = 10\% $ und $n=1000$ gilt:\\
+$\P[S_{1000}\ge 550 ]\leq (\frac{e^{0.1}}{1.1^{1.1}})^{500}$
+\end{example}
+
+\subsection{Monte Carlo Integration}
+
+Das Integral
+$$
+I := \int_0^1 g(x) dx
+$$
+lässt sich als Erwartungswert auffassen, denn mit einer gleichverteilten Zufallsvariable $U \sim \mathcal{U}(0,1)$ folgt
+$$
+\E[g(U)] = \int_{-\infty}^\infty g(x) f_U(x) \d x = \int_0^1 g(x) \d x.
+$$
+Mit einer Folge von Zufallsvariablen $U_1,\ldots,U_n$, die unabhängig gleichverteilt $U_i \sim \mathcal{U}(0,1)$ sind, lässt sich das Integral approximieren: Nach dem schwachen Gesetz der grossen Zahlen gilt
+$$
+\overline{g(U_n)} = \frac{1}{n}\sum_{i=1}^n g(U_i) \overset{n\rightarrow\infty}{\longrightarrow} \E[g(U_1)] = I.
+$$
+
+
+% ------------------------------------------------------------------------------------------------ %

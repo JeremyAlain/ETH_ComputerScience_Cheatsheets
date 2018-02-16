@@ -1,0 +1,57 @@
+\section{Differentialrechnung in $\R^n$}
+Hier geht es um Funktionen $f: \R^n \to \R^m$, wobei $m=1$ gelten kann
+($f: \R^n \to \R$). Solche Funktionen haben die allgemeine Form:
+$f(x) = f(x_1, x_2, x_3, \ldots, x_n) = \begin{pmatrix}
+f_1(x_1, x_2, x_3, \ldots, x_n)\\
+f_2(x_1, x_2, x_3, \ldots, x_n)\\
+\ldots\\
+f_m(x_1, x_2, x_3, \ldots, x_n)
+\end{pmatrix}$
+
+Für nahezu alle Eigenschaften gilt: Die Vektorfunktion $f: \R^n \to \R^m$ hat
+eine bestimmte Eigenschaft, wenn jede einzelne ihrer Komponenten
+($f_1, f_2, \ldots, f_m$) die besagte Eigenschaft besitzen. Das Problem liegt
+neu also nicht im Wertebereich, sondern vor allem in Definitionsbereich.
+
+\subsection{Norm}
+Eine Norm auf $\R^n$ ist die Funktion $\|\cdot\|: \R^n \to \R$ mit den folgenden
+Eigenschaften:
+\begin{itemize}
+	\item $\forall x \in \R^n: \|x\| \geq 0$
+	\item $\forall x \in \R^n: \|x\| = 0 \Leftrightarrow x = \vec{0}$
+	\item $\forall x \in \R^n, \alpha \in \R: \|\alpha x\| = |\alpha| \|x\|$
+	\item $\forall x,y \in \R^n: \|x + y\| \leq \|x\|+\|y\|$
+\end{itemize}
+
+\subsection{Partielle Ableitung}
+$\frac{\partial f}{\partial x} = f_{x} = $ partielle Ableitung von $f$ nach $x$. Dabei leitet man die Funktion nach $x$ ab und betrachtet die anderen Variabeln als Konstant. \\
+Merke: partielle differenzierbarkeit impliziert nicht stetigkeit!
+
+\begin{definition}A heisst die Ableitung von f (einfach jede Komponente nach jeder Variabel ableiten) und wir schreiben:
+\[	
+	A = Df(x) \gtext{oder} A = df(x)
+\]
+ \\
+Bsp. Sei $f: \R^2 \to \R^3$ eine Funktion:\\
+$f(x, y) = 
+\left(
+	\begin{array}{c}
+		g_1(x, y) \\
+		g_2(x, y) \\
+		g_3(x, y)
+	\end{array}
+\right)$  
+Dann ist: $Df(x, y) = 
+\left(
+	\begin{tabular}{c|c}
+		\vspace{0.1cm}$\frac{\partial g_1}{\partial x}$ & $\frac{\partial g_1}{\partial y}$ \\
+		\vspace{0.1cm}$\frac{\partial g_2}{\partial x}$ & $\frac{\partial g_2}{\partial y}$ \\
+		$\frac{\partial g_3}{\partial x}$ & $\frac{\partial g_3}{\partial y}$
+	\end{tabular}
+\right)$
+\end{definition}
+
+\begin{satz}[Satz von Schwarz]
+Ist $f$ nach $x$ und $y$ zweimal partiell differenzierbar und sind die gemischten
+partiellen Ableitungen $f_{xy}$ und $f_{yx}$ stetig, so gilt: $f_{xy} = f_{yx}$.
+\end{satz}

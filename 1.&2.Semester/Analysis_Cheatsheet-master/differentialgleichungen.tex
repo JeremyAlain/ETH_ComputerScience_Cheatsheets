@@ -1,0 +1,299 @@
+\section{Differentialgleichung (DGL)}
+{\small
+Lineare DGL haben die allgemeine Form:
+\vspace{-0.2cm}\[
+	y^{(n)} + p_{n-1}(x) \cdot y^{(n-1)} + ... + p_1(x) \cdot y' + p_0(x) \cdot y = q(x) 
+\]
+\begin{description}
+	\item [$y$] steht für $y(x)$ eine noch unbekannte Funktion von x.\\
+			$y^{(i)}$ ist einfach die $i$-te Ableitung davon.
+
+	\item [$p_i(x)$] steht für irgendeine Funktion mit der $y$ (oder $y^{(i)}$) multipliziert wird (Koeffizienten genannt). Kann auch Konstante sein (zB. 1).
+
+	\item [$q(x)$] nennt man Störfunktion. Ist $q(x) = 0$ nennt man die DGL Homogen, sonst Inhomogen.
+\end{description}
+
+Die allgemeine Lösung einer DGL ist gegeben durch:
+\vspace{-0.2cm}\[
+	y(x) = y_h(x) + y_p(x)
+\]
+$y_h(x)$ ist die allgemeine Lösung der Homogenen DGL und\\
+$y_p(x)$ ist die partikuläre Lösung der Inhomogenen DGL.
+}
+
+\subsection{Lineare DGL 1. Ordnung}
+\vspace{-0.1cm}Diese DGL haben die allgemeine Form: $y' + p(x) \cdot y = q(x)$ \small {oder Homogene Lösung mit c als Funktion
+$\rightarrow  y(homo)C\cdot e^x \rightarrow C(x)e^x$}
+
+\subsubsection[Konst. Koeffizient]{Lineare DGL 1. Ordnung mit konst. Koeffizienten}
+\vspace{-0.1cm}Diese DGL hat die Form: $y' + a \cdot y = q(x)$ mit $a \in \R$
+
+Vorgehen: Gleich wie im Fall von n, einfach mit n = 1.
+
+\subsubsection[Variabler Koeffizient]{Lineare DGL 1. Ordnung mit var. Koeffizienten}
+Diese DGL hat die Form: $y' + p(x) \cdot y = q(x)$
+
+Wir haben nur DGL mit $q(x) = 0$ behandelt.
+Vorgehen: Siehe separierbare DGL.
+
+\subsection{Lineare DGL n-ter Ordnung {\footnotesize mit konst. Koeffizienten}}
+Diese DGL haben genau n Nullstellen und die Form:
+\begin{eqnarray*}
+	y^{(n)}+a_{n-1} \cdot y^{(n-1)}+\ldots+a_1 \cdot y' +a_0 \cdot y=g(x)\\
+	\text{wobei} \; g(x) = 0 \hspace{10pt} \text{oder} \hspace{10pt} g(x) \neq 0
+\end{eqnarray*}
+
+\textbf{Vorgehen im homogenen Fall:}
+\begin{enumerate}[leftmargin=0.5cm]
+	\item Homogene DGL aufstellen und dazu das charakteristische Polynom $p(\lambda)$ notieren mit Ansatz $y(x) = e^{\lambda x}$ mit $\lambda \in \C$:
+	\begin{align*}
+		y^{(n)} &+ a_{n-1} \cdot y^{(n-1)} &+ \ldots &+ a_1 \cdot y' &+& \, a_0 \cdot y&=0\\
+		p(\lambda) = (\lambda^n &+ a_{n-1} \cdot \lambda^{n-1} &+ \ldots &+ a_1 \cdot \lambda &+& \, a_0) \cdot e^{\lambda x} &\overset{!}{=} 0 \\
+		= \lambda^n &+ a_{n-1} \cdot \lambda^{n-1} &+ \ldots &+ a_1 \cdot \lambda &+& \, a_0 &\overset{!}{=} 0
+	\end{align*}
+	Merke: $e^{\lambda x}$ kann nie 0 sein, deshalb muss (...) = 0 sein!
+
+	\item Nun müssen die ($\lambda_1, \ldots, \lambda_n$) Nullstellen von $p(\lambda)$ berechnet werden. Wenn $n > 2$ muss zuerst $p(\lambda)$ in lineare und quadratische Faktoren (durch raten/x-ausfaktorisieren/Polynomdivision/binomische Formeln) zerlegt werden. Dh: Jeder Faktor ist dann von 1. oder 2. Ordnung und davon können nun die Nullstellen berechnet werden (ablesen/Mitternachtsformel). Wir beachten, dass es sowohl reelle als auch komplexe Nullstellen gibt und merken für jede Nullstelle die Vielfachheit dieser Nullstelle.\\
+	Bsp. einer linearer und quadratischen Zerlegung:
+	{\small\vspace{-0.2cm} \begin{align*}
+			p_1(\lambda) &= \lambda^2 + \lambda - 6 = (\lambda + 3) (\lambda - 2) \hspace{10pt} \text{oder} \\
+			p_2(\lambda) &= \lambda^4 -4 = (\lambda^2 + 2) (\lambda^2 - 2) = (\lambda^2 + 2) (\lambda + \sqrt{2}) (\lambda - \sqrt{2})
+	\end{align*}}
+	\item 
+	\begin{enumerate}[leftmargin=0.3cm]
+		\item Ist $\lambda_i$ eine k-fache reelle Nullstelle(siehe Vielfachheit), so gibt es k linear unabhängige Lösungen zur Nullstelle $\lambda_i$, nämlich:
+		\vspace{3pt}
+		\begin{align*}
+			e^{\lambda_i x}, \, x e^{\lambda_i x}, \, x^2 e^{\lambda_i x}, \, ... , \, x^{k-1} e^{\lambda_i x}
+		\end{align*}
+
+		\item Sind $\lambda_i = a \pm ib$ k-fache komplexe Nullstellen, so gibt es 2k linear unabhängige Lösungen zu diesen 2 Nullstellen, nämlich:
+		{\small\vspace{-0.2cm} \begin{align*}
+				e^{\lambda_i x}, x e^{\lambda_i x}, \ldots, x^{k-1} e^{\lambda_i x}
+				= \; &e^{x(a+ib)}, x e^{x(a+ib)}, \ldots, x^{k-1} e^{x(a+ib)}, \\
+				&e^{x(a-ib)}, x e^{x(a-ib)} \ldots, x^{k-1} e^{x(a-ib)}
+		\end{align*}}
+		z.B. $\lambda = \pm i \rightarrow e^{ix},xe^{ix},e^{-ix},xe^{-ix}$
+		\\
+		Merke: Durch anwenden der Eulersche Identität lässt sich obige komplexe Lösung auch reell schreiben als:
+		\vspace{3pt}
+		\begin{align*}
+			&e^{a x} \, \cos(bx), \, x e^{a x} \, \cos(bx), \ldots, \, x^{k-1} e^{a x} \, \cos(bx) \hspace{10pt} \text{und}\\
+			&e^{a x} \, \sin(bx), \, x e^{a x} \, \sin(bx), \ldots, \, x^{k-1} e^{a x} \, \sin(bx)
+		\end{align*}
+	\end{enumerate}
+	$\cos(x)=\frac{1}{2i}(e^{ix}+e^{-ix}) \leftrightarrow \sin(x) ? \frac{1}{2i}(e^{ix}+e^{-ix})$
+	\vspace{3pt}
+	\item Die allgemeine Lösung dieser homogenen DGL ist nun eine linearkombination all dieser gefundenen Lösungen. \\
+	Bsp: $\lambda_1 =$ einfache, $\lambda_2 = $ 2-fache reelle Nullstelle:
+	\begin{align*}
+	 y_h(x) = C_1 e^{\lambda_1 x} + \ucomment{\lambda_2: \text{2-fache Nullstelle}}{C_2 e^{\lambda_2 x} + C_3 x e^{\lambda_2 x}}
+	\end{align*}
+
+	\item Anfangswertproblem lösen: (nur wenn es keine inhomogene DGL ist, sonst kommt es erst später!) Vorgehen ist das gleiche wie bei inhomogenen DGL. 
+\end{enumerate}
+
+\textbf{\textbf{Vorgehen im inhomogenen Fall:}}
+\begin{enumerate}[leftmargin=0.3cm]
+	\item Zuerst die homogene Lösung finden (siehe oben)!
+
+	\item Dann einen geeigneten Ansatz für das $y_p$ wählen (siehe \ref{sec:ansatz-dgl})\\
+	Merke: Ist $q(x)$ eine linearkombination, dann mache die folgenden Schritte für jeden Summanden von $q(x)$ einzeln und addiere am Ende die Lösungen! (Superpositionsprinzip)
+
+	\item Hat man einen allgmeinen Ansatz für $y_p$ mit noch unbekannten Konstanten bestummen, so werden jetzt die nächsten $n$ Ableitung davon berechnet. ($n$ = Ordnung der DGL). 
+
+	\item Nun setzt man die berechneten Ableitungen in die ursprüngliche inhomogene DGL ein. Dh: ersetze $y$ mit $y_p$, $y'$ mit der 1. Ableitung von $y_p$ etc. (Evtl. Terme vereinfachen)
+
+	\item Jetzt die unbekannten Konstanten bestimmen indem man einen Koeffizientenvergleich macht. Dh: Gleichungen aufstellen, so das linke Seite der DGL der rechten entspricht. 
+
+	\item Gefundene Konstanten können jetzt in die partikuläre Lösung eingesetzt werden.\\
+	Die allgemeine Form der Lsg ist $y(x) = y_h(x) + y_p(x)$
+
+	\item \textbf{Anfangswertproblem lösen}: Die Unbekannten $C_i$ können gefunden werden, wenn genügend Punkte gegeben sind, an denen der Funktionswert bekannt ist. Einfach die allgemeine Lösung $y(x)$ an den gegebenen Punkten auswerten (evtl. noch ableiten) und Gleichung mit dem bekannten Resultat aufstellen.
+	\item (allgemein) = x(homo) + x(part)
+\end{enumerate}
+
+\subsection{Ansätze für partikuläre Lösung}
+\label{sec:ansatz-dgl}
+	\textbf{Hinweis}:
+	\begin{itemize}
+		\item Ansätze nur brauchbar für lineare DGL mit konst. Koeffizienten.
+
+		\item Die gesuchte Funktion $y$ ist immer vom gleichen Grad wie die Störfunktion $q(x)$.
+
+		\item Wenn $q(x)$ eine Linearkombination von Funktionen ist, so muss man auch einen entsprechenden Ansatz wählen! Dh: Für jeden Summanden von $q(x)$ einzeln eine partikuläre Lösung finden und am Ende addieren!
+	\end{itemize}
+	Bezeichnungen:
+	\begin{align*}
+	P(x)  &  \quad \text{charakt. Polynom der DGL}  \\
+	S_k(x) & \quad \text{polynomielle Störfunktion, Grad} \; k \\
+	A, B & \quad \text{unbekannte Konstanten} \\
+	R_k(x) = a_k x^k + . + a_1 x + a_0 & \quad \text{mit unbekannten Koeffizienten}
+	\end{align*}
+		
+	\begin{tabular}{l|l}
+		$q(x)$ & $Ansatz$ \\ \hline \hline
+		
+		$ S_k(x) $ & $R_k(x)$ , falls $P(0) \neq 0$ (A)\\
+		\small{$S_1(x): ax + b$} &  $x^q R_k(x)$, falls $0$ $q$-fache NST von $P (Ax + B)$ \\ 
+		\small{$S_2(x): ax^2 + bx + c$} & $Ax^2 + Bx + C$\\ \hline
+
+		$ c e^{mx} $  & $A e^{mx}$ , falls $P(m) \neq 0$\\ 
+		&  $A x^q e^{mx}$, falls $m$ $q$-fache NST von $P$ \\ \hline
+
+		$ S_k(x) e^{mx} $  & $R_k(x) e^{mx}$ , falls $P(m) \neq 0$\\
+		&  $x^q R_k(x) e^{mx}$, falls $m$ $q$-fache NST von $P$ \\ \hline
+		$ \sin wx, \cos wx $  & $A \cos wx + B \sin wx$ , falls $P(\pm iw) \neq 0$\\
+		&  $x^q (A \cos wx + B \sin wx)$, falls $\pm iw$ \\
+		& $q$-fache NST von $P$ \\ \hline
+		$ \sinh wx, \cosh wx $  & $A \cosh wx + B \sinh wx$ , falls $P(w) \neq 0$\\
+		&  $x^q (A \cosh wx + B \sinh wx)$, falls $w$ \\
+		& $q$-fache NST von $P$ \\
+		$\sin(ct)$ & $A\sin(ct) + B\cos(ct)$\\
+		$\cos(ct)$ & $A\sin(ct) + B\cos(ct)$
+	\end{tabular}
+
+\subsection{Separierbare DGL}
+Ist ein Spezialfall von DGL 1. Ordnung wo $q(x) = 0$ ist. Die DGL muss aber nicht zwingend linear sein! Das Ziel ist es alle $y$ und $x$ auf eine Seite zu bringen.
+Eine Differentialgleichung für die Funktion $y$ heisst separierbar, wenn sie auf diese Form gebracht werden kann.
+\[
+	y' = p(x) \cdot h(y) \hspace{1cm} \text{Merke: $y' = \frac{dy}{dx}$}
+\]
+Vorgehen:
+\begin{enumerate}
+	\item DGL auf obige Form bringen. (wichtig: nur $y'$ links!)
+
+	\item $y'$ mit $\frac{dy}{dx}$ ersetzen und Variabeln trennen: $\frac{1}{h(y)} \, dy = p(x) \, dx$
+
+	\item Beidseitig integrieren: $\int \frac{1}{h(y)} \, dy = \int p(x) \, dx$
+
+	\item Nach $y$ auflösen
+
+	\item Lösung: $y(x) = C \cdot e^{\int p(x) \, dx}$ \hspace{0.5cm} (Für: $h(y) = y$ und $C \in \R)$
+
+	\item Anfangswertproblem lösen: Bekannte Punkte in Lösung $y(x)$ einsetzen und Gleichung aufstellen, damit C bestummen werden kann.
+\end{enumerate}
+\textbf{Merke:} Weitere Lösungen kann die Gleichung $h(y) = 0$ liefern, muss es aber nicht. Diese Lösungen sind konstanten (also $\in \R$).
+
+\subsection{Bsp. 1 - Separierbare DGL}
+\textbf{Löse:} $y' = \cos(x) \cdot y$ \\
+{\small Wir bemerken, dass für $y = 0$, die DGL bereits erfüllt ist. Also ist die konstante Funktion $y(x) = 0$ bereits eine Lösung!}
+\begin{align*}
+	\frac{dy}{dx} = \cos(x) \cdot y \Leftrightarrow \frac{1}{y} \, dy &= \cos(x) \, dx\\
+	\int \frac{1}{y} \, dy &= \int \cos(x) \, dx \\
+	\ln(y) &= \sin(x) + C\\
+	y &= e^{\sin(x) + C} \\
+	y &= e^{\sin(x)} \cdot e^C \\
+	y(x) &= \uuline{C' \cdot e^{\sin(x)}}	\hspace{1cm} (C' \in \R)
+\end{align*}
+\subsection{Bsp. 2 - Separierbare DGL}
+\textbf{Löse:} $y' - y = \ln(x) \cdot y + 1 + \ln(x)$ mit Anfangsbed: $y(2) = 3$\\
+Es ist:
+\begin{align*}
+	y' &= \ln(x) \cdot y + 1 + \ln(x) + y \\ 
+	y' &= (\ln(x) + 1) \cdot (y + 1)
+\end{align*}
+Die rechte Seite ist Null, falls $y = -1$ ist $(h(y) = 0)$. Also ist die konstante Funktion $y(x) = -1$ eine Lösung der DGL.\\ Falls $y \neq -1$, rechnen wir:
+\begin{align*}
+	\frac{dy}{dx} &= (\ln(x) + 1) \cdot (y + 1) \\
+	\int \frac{1}{y + 1} \, dy &= \int \ln(x) + 1 \; dx\\
+	\ln|y + 1| &= x \cdot \ln|x| - x + x + C \\
+	|y + 1| &= e^{x \ln|x| + C} \\
+	y &= (e^{\ln(x)})^x \cdot e^C - 1\\
+	%y &= C' \cdot x^x -1 \text{ mit} C' = \pm e^C \text{ beliebig } \in \R \backslash \{ 0 \}\\ 
+	y_h &= C' \cdot x^x -1 \text{ mit } C' \in \R
+\end{align*}
+Nun mit Anfangsbeding. $C'$ berechnen:
+\begin{align*}
+	y(2) = C' \cdot 2^2 -1 &\overset{!}{=} 3 \\
+	C' \cdot 3 &\overset{!}{=} 3 \\
+	&\Rightarrow C' = 1
+\end{align*}
+Also ist die gesuchte Lösung:
+\[
+	y(x) = \uuline{x^x -1}
+\]
+\subsection{Variation der Konstanten}
+\begin{footnotesize}
+Bsp: $y'(x) = y(x)tan(x) + 4sin(x)$ durch Punkt (0,1).\\
+1. $y_{homo}$ mit separierebarer DGL $\rightarrow$ $\frac{c}{cos(x)}$ 2. $y_{part} = \frac{c(x)}{cos(x)}$ 3. n-Ableitungen berechnen 4. einsetzen in ursprüngliche DGL(gewisser Term fällt weg) 5. nach c'(x) auflösen 6. Integrieren.
+\end{footnotesize}
+\subsection{Bsp. 3 - Lin. DGL mit konst. Koeffizienten}
+Bestimme die allgemeine Lösung dieser inhomogenen linearen DGL 2. Ordnung mit konstanten Koeffizienten, sowie die Lösung mit der Anfangsbedingung $y(0) = 1, y'(0) = -1$:
+\[
+	y'' - y = \cosh t
+\]
+\textbf{Wir lösen zuerst die homogene DGL.} Dazu notieren wir zuerst das charakteristische Polynom und berechnen davon die Nullstellen. Das char. Polynom ist:
+\begin{align*}
+	\lambda^2 - 1 = 0 \\
+	(\lambda + 1) (\lambda - 1) = 0
+\end{align*}
+Somit sind die Nullstellen $\lambda_1 = 1$ und $\lambda_2 = -1$ und die homogene DGL:
+\begin{align*}
+	y_h(t) = C_1 e^t + C_2 e^{-t} \gap \text{für 2 beliebige Konstanten $C_1, C_2$}
+\end{align*}
+\textbf{Nun lösen wir noch die inhomogene DGL.} \\
+Die partikuläre Lösung für $y'' - y = \ucomment{\cosh(wt)}{\cosh(t)}$ ist von der Form:
+\begin{align*}
+	y_p(t) &= t (A \cosh(t) + B\sinh(t)) \\
+	y_p'(t) &= A \cosh(t) + B\sinh(t) + tA\sinh(t) + tB\cosh(t) \\
+	y_p''(t) &= \ldots = 2A\sinh(t) + 2B\cosh(t) + tA\cosh(t) + tB\sinh(t) 
+\end{align*}
+Nun müssen wir die Konstanten A und B noch bestimmen, dazu setzen wir $y_p$ und seine Ableitungen in die DGL ein und wählen A und B so, dass der linke Term = der rechte Term ist:
+\begin{align*}
+	y_p''(t) - y_p(t) &\overset{!}{=} \cosh(t) \\
+	&\vdots \\
+	2A\sinh(t) + 2B\cosh(t) &\overset{!}{=} \cosh(t) \\
+\end{align*}
+Daraus leiten wir folgende 2 Gleichungen her:
+\begin{align*}
+	2A = 0 \gap \text{und} \gap 2B = 1 \\
+	\Rightarrow A = 0 \gap \text{und} \gap B = \frac{1}{2}
+\end{align*}
+Somit ist die partikuläre Lösung:
+\begin{align*}
+	y_p(t) &= t (A \cosh(t) + B\sinh(t)) = \frac{t}{2} \sinh(t)
+\end{align*}
+\textbf{Die allgemeine Lösung ist somit:}
+\[
+	y(t) = y_h(t) + y_p(t) = \uuline{C_1 e^t + C_2 e^{-t} + \frac{t}{2} \sinh(t)}
+\]
+\textbf{Nun lösen wir noch das Anfangswertproblem.} Wir berechnen zuerst die nötigen Ableitungen von $y(t)$ gemäss DGL. 
+\begin{align*}
+	y(t) &= C_1 e^t + C_2 e^{-t} + \frac{t}{2} \sinh(t) \\
+	y'(t) &= C_1 e^t - C_2 e^{-t} + \frac{1}{2} \sinh(t) + \frac{t}{2} \cosh(t) 
+\end{align*}
+Einsetzen den Anfangswertbedingungen liefert:
+\begin{align*}
+	y(0) &= C_1 e^0 + C_2 e^{-0} + \frac{0}{2} \sinh(0) \overset{!}{=} 1 \\
+		 &= C_1 + C_2 \overset{!}{=} 1 \\
+	y'(0) &= C_1 e^0 - C_2 e^{-0} + \frac{1}{2} \sinh(0) + \frac{0}{2} \cosh(0)  \overset{!}{=} -1 \\
+		  &= C_1 - C_2 \overset{!}{=} -1 \\
+\end{align*}
+Daraus folgt, dass $C_1 = 0$ und $C_2 = 1$ sein muss. \\
+\textbf{Somit ist die Lösung der DGL:}
+\begin{align*}
+	y(t) &= y_h(t) + y_p(t) = \uuline{e^{-t} + \frac{t}{2} \sinh(t)}
+\end{align*}
+\textbf{3 Wege für Separierebare DGL MIT Partikulärlösung}
+$y'=f(x)y+g(x)$
+\begin{enumerate}
+	\item $y(homo)(x)= exp(\int f(x)dx)$
+	\item $y(part)(x) = g(homo)(x)\cdot \int\frac{g(x)}{g(homo)(x)}$
+	\item $y(x) = C\cdot y(homo)(x) + y(part)(x)$
+	\item AWP lösen und einsetzen 
+\end{enumerate}
+Bsp: $ y'= -\frac{y}{x} +1 $
+$\rightarrow y(homo(x) = exp(\int\frac{-1}{x}dx) = exp(-\ln(|x|)) = \frac{1}{|x|}$\\
+\\
+\textbf{Bernouille}
+$y' = f(x)y + g(x)y^\alpha$
+\begin{enumerate}
+	\item$ u = y^{1-\alpha}$
+	\item$ u' = (1-\alpha)f(x)\cdot u +(1-\alpha)\cdot g(x)
+	u(x) = ... \rightarrow vorheriges\ Schema... \rightarrow y=(C\cdot u)^{\frac{1}{1-\alpha}}$
+	\item $\alpha < \rightarrow g = 0 $		
+	\item $\alpha\ $gerade$ \rightarrow$ auch für $u < 0$ definiert
+	\item $\alpha\ $ungerade $\rightarrow$ -g auch Lösung
+\end{enumerate}
+

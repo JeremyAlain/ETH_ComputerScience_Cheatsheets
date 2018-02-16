@@ -1,0 +1,41 @@
+% ------------------------------------------------------------------------------------------------ %
+% GRUNDLAGEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Grundlagen}
+
+\begin{definition}[Stichprobe]
+Die Gesamtheit der Beobachtungen $x_1, \ldots, x_n$ oder der Zufallsvariablen $X_1, \ldots, X_n$ wird \emph{Stichprobe} genannt; die Anzahl $n$ heisst \emph{Stichprobenumfang}.
+\end{definition}
+
+\begin{definition}[Empirische Verteilungsfunktion]
+Die \emph{empirische Verteilungsfunktion} $F_n$ zu den Messdaten $x_1,\ldots,x_n$ ist definiert durch
+$$
+F_n(y) := \frac{1}{n} \lvert\{x_i\mid x_i \leq y\}\rvert = \frac{1}{n} \sum_{i\text{ mit } x_i \leq y} f_i.
+$$
+\end{definition}
+
+\begin{definition}[Empirischer Mittelwert]
+$\newline$
+Schätzer für $\mu \overline{x}_n = \overline{x} = \frac{1}{n} \sum_{i=1}^n x_i
+$
+\end{definition}
+
+\begin{definition}[Empirische Varianz und Standardabweichung]
+$\newline$
+Schätzer für Varianz $s_n^2 = s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i-\overline{x})^2
+$
+\end{definition}
+
+\begin{definition}[Empirisches Quantil] Das \emph{empirische $\alpha$-Quantil} zu den geordneten Daten $x_{(1)}, \ldots, x_{(n)}$ ist gegeben durch
+$$
+(1-\alpha) x_{(k)} + \alpha x_{(k+1)} = x_{(k)} + \alpha \left(x_{(k+1)} - x_{(k)} \right),
+$$
+wobei $k = \lfloor \alpha n \rfloor$ und $\alpha \in (0,1)$.
+Damit liegt etwa der Anteil $\alpha$ unterhalb des empirischen $\alpha$-Quantils, und somit etwa der Anteil $1-\alpha$ oberhalb.
+\end{definition}
+
+\begin{definition}[Empirischer Median]
+Der \emph{empirische Median} ist definiert als das $0.5$-Quantil.
+\end{definition}

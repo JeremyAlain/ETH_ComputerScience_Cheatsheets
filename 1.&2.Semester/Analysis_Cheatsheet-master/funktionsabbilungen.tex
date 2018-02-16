@@ -1,0 +1,45 @@
+\section{Implizite Funktionen}
+\subsection {Algorithmus}
+\begin{footnotesize}
+
+Angenommen wir haben implizite Funktion $F(x1,x2...,xn,y) = 0$ und den Punkt $A(x1,x2,...,xn,y)$.
+\begin{enumerate}
+	\item Prüfe ob der Punkt die implizite Gleichung erfüllt, also ob $F(A) = 0$
+	\item Bilde $F\MakeLowercase{y}$ und prüfe, ob $F\MakeLowercase{y}(A)$ $\neq 0$ gilt.
+	\item Bilde $F\MakeLowercase{xi}$ und setze alles in die Ableitungsformel ein:
+	$y\MakeLowercase{xi}(x1,...,xn)) f\MakeLowercase{xi} = -\frac{F\MakeLowercase{xi}(A)}{F\MakeLowercase{y}(A)}$
+\end{enumerate}
+\end{footnotesize}
+\subsection{Einige Parametrisierungen}
+\begin{align*}
+Cycle && Counter-Clockwise && Clockwise \\
+\frac{x^2}{a^2}\, \frac{y^2}{b^2} = 1 && x = a\cos(t) && x= a\cos(t) \\
+(Ellipse)&&y=b\sin(t) &&y=-b\sin(t)\\
+&&0\leq t \leq 2\pi &&0\leq t \leq 2\pi\\
+\\
+x^2+y^2\, = r^2 && x = r\cos(t) && x= r\cos(t) \\
+(Circle)&&y=r\sin(t) &&y=-r\sin(t)\\
+&&0\leq t \leq 2\pi &&0\leq t \leq 2\pi\\
+y=f(x) && x= t \\
+&& y=f(t)\\
+x=g(y) && x=g(t)\\
+&&y=t
+\end{align*}
+$\vec{r}(t)=(1-t)\langle x_0, y_{0}, z_{0}\rangle +t\langle x_{1}, y_{1}, z_{1}\rangle, 0\leq t \leq 1$
+
+\begin{align*}
+Line Segment From && && \\
+(x_{0}, y_{0}, z_{0}) to x_{1}, y_{1}, z\MakeLowercase{1}&& x=(1-t)\cdot x_{0} + t\cdot x_{1}&&\\
+ && y=(1-t)\cdot y_{0} + t\cdot y_{1}&& 0 \leq t \leq 1 \\
+  &&  z=(1-t)\cdot z_{0} + t\cdot z_{1}
+\end{align*}
+
+\subsection{Satz über Implizite Funktionen}
+\begin{footnotesize}
+Ist die Funktion $F(x,y)$ stetig differenzierbar und gilt im Punkt $P(x_0,y_0)$, dass $F(x_0,y_0)=0$ und $F_y(x0,y0)\neq 0$, so kann man den Ausdruck $F(x_0,y_0)=0$ eindeutig nach $y_0$ auflösen.
+
+Analog lässt sich die implizite Funktion in dem Punkt nach x auflösen, wenn $F(x_0,y_0)=0$ und $F_x(x_0,y_0)\neq0$ gilt.
+\end{footnotesize}
+\begin{footnotesize}
+	\textbf{Algorithm} 1. $F(A) = 0$; \\2. $ F_y \neq 0$; 3. $y_{xy}(x) = f_{xi}(x) = -\frac{F_{xi}(A)}{F_y(A)}$
+\end{footnotesize}

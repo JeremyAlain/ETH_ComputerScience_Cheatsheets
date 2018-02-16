@@ -1,0 +1,326 @@
+\section{Vektoranalysis}
+\begin{footnotesize}
+\begin{definition}[Vektorfeld]
+Die Abbildung $F: \R^n \to \R^n$ ist ein Vektorfeld. Es weist jedem
+Vektor $\vec{x} \in \R^n$ einen Vektor $F(\vec{x}) \in \R^n$ zu.
+\end{definition}
+
+\begin{definition}[Skalarfeld]
+Ist eine Abbildung der Form $f: \R^n \to \R$. Es existiert wenn das Vektorfeld wirbelfrei/konservativ ist. Ergibt ein geschlossener Weg im Vektorfeld nicht null so existiert kein skalares Feld (jedoch nicht umbedingt umgekehrt).\\
+Ebenes Skalarfeld: $f: \R^2 \to \R$ (Pro Flächenpunkt ein Skalar)\\
+Räumliches Skalarfeld: $f: \R^3 \to \R$ (Pro Raumpunkt ein Skalar)
+\end{definition}
+\textbf{Tangentialebene} \textbf{1.} Bestimme die ersten partiellen Ableitungen von f \\ \textbf{2.} Bestimme deren Werte im Punkt $(x_0, y_0)$ sowie (falls noch nicht gegeben) $z_0 = f(x_0, y_0)$ \textbf{3.} Setze alles in folgende Formel:\\
+$E : z = z_0 + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)$
+\end{footnotesize}
+\begin{definition}[Gradient]
+Ist $f: \R^n \to \R$ (ein Skalarfeld), so ist der Gradient von $f$ der Vektor
+$\vec{v} = \grad f = \nabla f$. 
+
+\[
+	\text{Im Fall } f: \R^3 \to \R:   \nabla f = (f_x, f_y, f_z) =
+	\left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)
+\]
+
+Der Gradient ist also einfach ein Vektor, der aus den partiellen Ableitungen dieser Funktion besteht. Der Gradient beschreibt (von einem Punkt aus) immer die Richtung und den Betrag des steilsten Anstiegs der Funktion. 
+
+Analog wird die maximale Fallrichtung bezeichnet: $- \nabla f$
+\end{definition}
+
+\begin{definition}[Richtungsvektor] Der Richtungsvektor ist ein normiert Vektor auf länge 1. Dh: Wenn die Richtung der grössten Steigung gefragt ist, ist der normierte Gradient gemeint! Also $\frac{\nabla f}{|\nabla f|}$
+\end{definition}
+
+\begin{definition}[Richtungsableitung]
+Ist eine reelle Zahl, sie gibt die Änderung des Funktionswertes von $f$ an, wenn man von einem Punkt $P$ aus in eine bestimmte Richtung $\vec{a}$ um eine Längeneinheit fortschreitet. Die Richtungsableitung von $f$ in Richtung $\vec{a}$ ist definiert als: 
+$\frac{\partial f}{\partial \vec{a}} = \nabla f \cdot \vec{e_a} = \nabla f \cdot \frac{\vec{a}}{|\vec{a}|} = \frac{1}{|\vec{a}|} \cdot \nabla f \cdot \vec{a}$\\
+Merke: Die Richtungsableitung ist maximal, wenn $\vec{a}$ in gleiche Richtung wie Gradient zeigt!
+\end{definition}
+
+\begin{definition}[Gradientenfeld / Potentialfeld] Sei\\ 
+$f: \R^n \to \R$ (ein Skalarfeld), dann ist $\vec{v} = \nabla f$ ein Vektorfeld und nennt $\vec{v}$
+Gradientenfeld / Potentialfeld.\\
+Es besitzt folgende Eigenschaften:
+\begin{itemize}[leftmargin=0.5cm]
+	\item Der Wert des Kurvenintegrals entlang eines beliebigen Weges innerhalb des
+	Feldes ist unabhängig vom Weg selbst, sondern nur vom Anfangs- und Endpunkt
+	\item Ein Kurvenintegral mit einem Weg bei dem Anfangs- und Endpunkt der
+	gleiche Punkt sind, hat den Wert 0.
+	\item Ist immer wirbelfrei: $\rot \vec{v} = \rot(\grad f) = \vec{0}$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Potential]
+Ist $\vec{v} = \nabla f$ (ein Potentialfeld), so ist $f: \R^n \to \R$ das Potential oder Stammfunktion zu $\vec{v}$. Gesucht ist also die Funktion $f$, welche abgeleitet das Potentialfeld $\vec{v}$ ergibt!
+Existiert wenn $\rot \vec{f} = \vec{0}$ und der Definitionsbereich zusamenhängend ist.
+\end{definition}
+
+\begin{definition}[Rotor / Rotation]
+Gibt die Tendenz eines Vektorfeldes an, um Punkte zu rotieren. Es ist ein Vektorfeld, welches aus einem anderen Vektorfeld hergeleitet wird. Die Rotation des Vektorfelds $F$ ist das Vektorfeld $\operatorname{rot} F$. Also: 
+$F (x, y) = 
+\left(
+	\begin{array}{c}
+		F_1 (x, y) \\
+		F_2 (x, y)
+	\end{array}
+\right) \Rightarrow
+ \operatorname{rot} F = 
+\left(
+	\begin{array}{c}
+		\vspace{3pt} F_{2_x} - F_{1_y}
+	\end{array}
+\right)$\\
+$F(x, y, z) = 
+\left(
+	\begin{array}{c}
+		F_1 (x, y, z) \\
+		F_2 (x, y, z) \\
+		F_3 (x, y, z)
+	\end{array}
+\right) \Rightarrow
+ \operatorname{rot} F = 
+\left(
+	\begin{array}{c}
+		\vspace{3pt} F_{3_y} - F_{2_z} \\
+		\vspace{3pt} F_{1_z} - F_{3_x} \\
+					 F_{2_x} - F_{1_y}
+	\end{array}
+\right)$\\
+Das Vektorfeld $\operatorname{rot} F$ wird häufig auch als Wirbelfeld zu $F$ bezeichnet. $F$ heisst in einem Bereich Wirbelfrei / Konservativ, wenn dort überall $\operatorname{rot} F = 0$ gilt.
+\end{definition}
+
+\begin{definition}[Wirbelfrei / konservativ]
+Ein Vektorfeld $\vec{v}$ ist wirbelfrei/konservativ wenn gilt: $\rot \vec{v} = 0 \rightarrow$ Dann kann man für das Wegintegral einfach das Potential berechnen.
+\end{definition}
+
+\begin{definition}[Vektorpotential]
+Ein Vektorfeld $\vec{v}$ heisst Vektorpotential zu $\vec{w}$, falls $\vec{w} = \rot \vec{v}$.
+\end{definition}
+
+\begin{definition}[Divergenz]
+Ist eine reelle Zahl, und ist ein Mass für die ''Quellen-/Senken-stärke'' eines bestimmten Punktes. 
+Die Divergenz eines Vektorfelds $F(x, y, z)$ ist definiert als div $F$. Also:
+\[
+F(x, y, z) = 
+\left(
+	\begin{array}{c}
+		F_1 (x, y, z) \\
+		F_2 (x, y, z) \\
+		F_3 (x, y, z)
+	\end{array}
+\right) \Rightarrow
+	\operatorname{div} F = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + 
+	\frac{\partial F_3}{\partial z}
+\] 
+$
+\operatorname{div} F(x_0, y_0, z_0) > 0 \Rightarrow \text{Quelle}\\
+\operatorname{div} F(x_0, y_0, z_0) < 0 \Rightarrow \text{Senke}\\
+\operatorname{div} F(x_0, y_0, z_0) = 0 \Rightarrow \text{Quellenfrei}
+$
+\end{definition}
+
+\begin{lemma}[Geschlossener Weg]
+Wenn das Vektorfeld $F$ ein Potential besitzt \uline{und} $\gamma$ geschlossen ist, so folgt $\int_\gamma F = 0$.\\
+Merke: $F$ besitzt genau dann ein Potential wenn:\\
+$F = \grad \phi$ oder ($\rot F = \vec{0}$ und der DB zusammenhängend ist)
+\end{lemma}
+
+\pagebreak
+\subsection{Bestimmen eines Potentials im $\R^2$}
+Sei $\vec{v} = \begin{pmatrix}
+F_1(x,y)\\
+F_2(x,y)
+\end{pmatrix} \hspace{1.5cm} \text{Merke: } F_{1_x}$ steht führ: $\frac{\partial F_1}{\partial x}$.
+
+Um schnell zu prüfen, ob man überhaupt den folgenden Algorithmus anwenden muss,
+kann man prüfen ob gilt: $F_{2_x} = F_{1_y}$ (rot $\vec{v} = 0)$, wenn nicht, so hat $\vec{v}$ kein Potential $f$.
+
+\begin{enumerate}[itemsep=1em]
+	\item $f(x,y) = \int F_1(x,y)\;dx + C(y)$ berechnen (Integral berechnen)
+	\item Die berechnete Gleichung $f(x,y)$ nun nach $y$ ableiten:
+	$\frac{\partial}{\partial y} f(x,y) = \frac{\partial}{\partial y}\int F_1(x,y)\;dx + C'(y)$
+	(berechnetes Integral nach $y$ ableiten)
+	\item $\frac{\partial}{\partial y} f(x,y) = F_2(x,y)$ setzen und $C'(y)$ berechnen durch umformen
+	und integrieren
+	\item Berechnetes $C(y)$ in die Gleichung im 1. Punkt einsetzen. Fertig. Achtung: Im Grunde hat
+	$C(y)$ durch integrieren (aufleiten) noch einen konstanten Wert, der beliebigen Wert haben kann.
+	Dieser taucht im Grunde auch in der fertigen $f(x,y)$ Funktion auf.
+\end{enumerate}
+
+\subsection{Bestimmen eines Potentials im $\R^3$}
+Sei $\vec{v} = \begin{pmatrix}
+F_1(x,y,z)\\
+F_2(x,y,z)\\
+F_3(x,y,z)
+\end{pmatrix}$.
+
+Um zu prüfen, ob man überhaupt ein Potential finden kann für $\vec{v}$ hat $\rot \vec{v} = 0$
+zu sein, also wirbelfrei zu sein. Dazu muss gelten (zu zeigen mit $\rot \vec{v} = 0$): 
+$F_{3_y} = F_{2_z}, F_{1_z} = F_{3_x}, F_{2_x} = F_{1_y}$.
+
+\begin{enumerate}[itemsep=1em]
+	\item $f(x,y,z) = \int F_1(x,y,z)\;dx + C(y,z)$ lösen (Integral berechnen)
+	\item Nun die berechnete Gleichung $f(x,y,z)$ nach $y$ ableiten $\Rightarrow f_y(x,y,z)$.
+	\item Die abgeleitete Gleichung $f_y$ mit $F_2(x,y,z)$ gleichsetzen: $f_y(x,y,z) = F_2(x,y,z)$
+	und damit $C_y(y,z)$ bestimmen.
+	\item Durch Integration von $C_y(y,z)$ nach $y$ ($\int C_y(y,z)\;dy$) wird $C(y,z)$ bestimmt
+	bis auf eine Konstante $D(z)$, die von $z$ abhängt. $C(y,z)$ hat also die Form:
+	$C(y,z) = \int C_y(y,z)\; dy + D(z)$.
+	\item Dieses $C(y,z)$ setzt man nun in die Gleichung $f(x,y,z)$ ein, die im 1. Punkt steht.
+	\item Nun wird die daraus erzeugte
+	$f(x,y,z) = \int F_1(x,y,z)\;dx + C(y,z) = \int F_1(x,y,z)\;dx + \int C_y(y,z)\; dy + D(z)$
+	Gleichung nach $z$ abgeleitet.
+	\item Durch Gleichsetzen von $f_z(x,y,z) = F_3(x,y,z)$ lässt sich $D_z(z)$ bestimmen.
+	\item $D_z(z)$ wird wiederrum durch Integration zu $D(z) = \int D_z(z)\; dz + c, \quad c \in \R$
+	\item Das berechnete $D(z)$ in die $f(x,y,z)$ Gleichung aus Punkt 6 einsetzen, fertig.
+\end{enumerate}
+
+% Kein Platz
+%\subsection{Geometrisches Verständniss}
+%Sei B ein drei dimensionaler Körper (beschrieben durch Punkte in $\R^3$ mit der Funktion $f$) so sei $\nabla f$ senkrecht dazu.
+
+%\subsubsection*{Beispiel}
+%aus analysis 2 (2012) serie 11 mc 3
+%Gib einen Vektoren der ein nach aussen gerichteter Normalenvektor
+%(nicht notwendigerweise normiert) auf dem Rand des Ellipsoids ist \[
+%B := 
+%\left\{ 
+%	\begin{pmatrix} x\\ y\\ z \end{pmatrix} \in \R^3  
+%	\middle\vert
+%	f\begin{pmatrix} x\\ y\\ z \end{pmatrix} 
+%		= \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} \leq 1
+%\right\}
+%\]
+
+%Der Vektor $\begin{pmatrix} 2x/a^2\\ 2y/b^2\\ 2z/c^2 \end{pmatrix}$ ist gleich $\nabla f$ und steht somit 
+%senkrecht auf der Niveaufläche $f=1$. Da er vom Ursprung weg orientiert ist, liefert er die richtige Antwort.\\
+%Der Vektor $\begin{pmatrix} yz(1/b^2-1/c^2)\\ xz(1/c^2-1/a^2)\\ xy(1/a^2-1/b^2) \end{pmatrix}$ ist tangential 
+%zum Rand $\partial B$
+
+\subsection{Hesse Matrix}
+Die Hesse-Matrix besteht aus den Ergebnissen, wenn $f$ zweimal hintereinander nach $x_i$ und $x_j$ partiell abgeleitet wird. Ist die Funktion zweimal stetig differenzierbar kann die Hesse-Matrix gebildet werden, welche immer symemtrisch ist (dh: $f_{xy} = f_{yx}$). \\
+Also gilt für $f: \R^n \to \R$ und $i,j = 1, \ldots, n$:
+\[
+	H_{f(x_1, \ldots, x_n)} = 
+	\left(
+		\begin{array}{c}
+			\frac{\partial^2 f}{\partial x_i \, \partial x_j}
+		\end{array}
+	\right)
+\]
+Für $f: \R^2 \to \R$ gilt also:
+\[
+	H_{f(x, y)} = 
+	\left(
+		\begin{array}{cc}
+			f_{xx} & f_{xy}\\
+			f_{yx} & f_{yy}
+		\end{array}
+	\right)	=
+	\left(
+		\begin{array}{cc}
+			\vspace{0.1cm} \frac{\partial^2 f}{\partial x \, \partial x} & \frac{\partial^2 f}{\partial x \, \partial y} \\
+			\frac{\partial^2 f}{\partial y \, \partial x} & \frac{\partial^2 f}{\partial y \, \partial y}
+		\end{array}
+	\right)
+\]
+%Kein Platz und für mich persönlich unwichtig
+%\subsection{Determinante}
+%{\scriptsize
+%$
+%	\text{det} A = 
+%	\left|
+%		\begin{array}{cc}
+%			a_{11} & a_{12}\\
+%			a_{21} & a_{22}\\
+%		\end{array}
+%	\right| = a_{11} \, a_{22} - a_{12} \, a_{21}
+%$
+%\[
+%	\text{det} A = 
+%	\left|
+%		\begin{array}{ccc}
+%			a_{11} & a_{12} & a_{13}\\
+%			a_{21} & a_{22} & a_{23}\\
+%			a_{31} & a_{32} & a_{33}
+%		\end{array}
+%	\right| = 
+%	\begin{array}{c}
+%			a_{11} \, a_{22} \, a_{33} + a_{12} \, a_{23} \, a_{31} + a_{13} \, a_{21} \, a_{32}\\
+%			- a_{31} \, a_{22} \, a_{13} - a_{32} \, a_{23} \, a_{11} - a_{33} \, a_{21} \, a_{12}
+%	\end{array}
+%\]}
+\subsection{Kritische Punkte im $\R^n$}
+Sei $f: \Omega \to \R$, $\Omega \subseteq \R^n$,  $x_0 \in \Omega$ und $\Omega$ \uline{offen}. Dann gilt: 
+\[
+	x_0 \text{ ist ein kritischer Punkt} \Leftrightarrow \nabla f(x_0) = 0
+\]
+Ein kritischer Punkt kann also ein Minima, Maxima oder ein Sattelpunkt sein! Oft müssen Extrema (Minima, Maxima) von $f$ berechnet werden welche zusätzlich eine gewisse Nebenbedingung $F$ erfüllen. $F$ ist oft in Form einer (Un)Gleichung 
+gegeben. 
+
+\textbf{Vorgehen - kritische Punkte bestimmen:} 
+\begin{enumerate}[leftmargin=0.5cm]
+	\item Berechne alle Punkte, die die Gleichung $\nabla f = 0$ erfüllen. Jeder dieser Punkte ist ein kritischer Punkt.
+
+	\item Nur diejenige Punkte sind relevant, welche in $\Omega$ liegen und Nebenbedingungen $F$ erfüllen. Dies lässt sich meist durch einfaches betrachten der Punkte und $\Omega$ bzw. $F$ feststellen.
+
+	\item Wenn der Typ der Punkte bestummen werden soll:
+	\begin{enumerate}[leftmargin=0.3cm]
+		\item Allgemeine Hesse Matrix $H_f$ berechnen
+
+		\item Mit Determinantenkriterium Punkttyp bestimmen.\\
+		- det $H_f(x_0) > 0$ \& $f_{xx}(x_0) > 0 \Rightarrow x_0$ = lokales Minimum.\\
+		- det $H_f(x_0) > 0$ \& $f_{xx}(x_0) < 0 \Rightarrow x_0$ = lokales Maximum.\\
+		- det $H_f(x_0) < 0 \Rightarrow x_0$ = Sattelpunkt.\\
+		- det $H_f(x_0) = 0 \Rightarrow x_0$ = Entarteter Punkt (Man kann nur etwas darüber Aussagen, wenn man seine Umgebung betrachtet!)
+	\end{enumerate}
+	$\textbf{Kochrezept Definitheit}$
+	\begin{footnotesize}
+		\begin{enumerate}
+			\item Diagonalmatrix? $\rightarrow$ Einträge in Diagonale sind Eigenwerte. $\rightarrow$ mit Eigenwertkrit. Definitheit ablesen. Sonst nächster Punkt.
+			\item Hauptminoren ausrechnen.
+			\begin{enumerate}
+			 \item Alle Hauptminoren von A pos. $\rightarrow$ A pos. definit. 
+			 \item Alle geraden Hauptmin.(A) pos. \& alle ungeraden Hauptmin(A) neg. $\rightarrow$ A neg. def.
+			 \item Alle Hauptmin.(A) nichtneg.\& mind. ein Hauptminor $\neq$ 0 $\rightarrow$ A pos. semidefinit ODER indefinit.
+			 \item Alle geraden Hauptmin(A) nichtneg. \& alle ungeraden Hauptmin(A) nichtpos.\& zumindest ein Hauptmin. $\neq$ 0 $\rightarrow$ A neg. semidefinit ODER indefinit.
+			 \item Alle Hauptmin(A) = 0 $\rightarrow$ A positiv semidefinit ODER neg. semidefinit ODER indefinit.
+			 \item Matrix A ist Nullmatrix $\leftrightarrow$ A ist gleichzeitig positiv semidefinit und negativ semidefinit. 
+			 \item Die Hauptminoren von A erfüllen keinen der obigen Punkte $\rightarrow$ A ist indefinit.  
+			\end{enumerate}
+			\item Sonst Eigenwertkriterium:
+				\begin{enumerate}
+					\item A pos. definit $\leftrightarrow \forall i \lambda _i > 0$
+					\item A pos.semidef. $\leftrightarrow \forall i \lambda _i >= 0$
+					\item A neg. def. $\leftrightarrow \forall i \lambda _i < 0$ 
+					\item A neg. semidef. $\leftrightarrow \forall i \lambda _i <= 0$
+					\item A indef. $\leftrightarrow$ mind. 1 Eigenwert $>0$ \& mind. 1 Eigenwert $<0$.
+				\end{enumerate}
+		\end{enumerate}
+	\end{footnotesize}
+		
+\end{enumerate}
+
+\textbf{Vorgehen - globale Extrema bestimmen:} 
+Meistens ist $\Omega$ nicht offen. Denn wenn $\Omega$ offen wäre, dann lassen sich alle Extrema mit $\nabla f = 0$ finden! Zusätzlich ist oft ein $F$ gegeben.
+\begin{footnotesize}
+\begin{enumerate}[leftmargin=0.5cm]
+	\item Identifizieren der Eckpunkte (ablesen)
+
+	\item Identifizieren der kritischen Punkte am Rand. \\
+	Dieser Rand ist quasi der neue Definitionsbereich von $f$ auf welchem Extrema gefunden werden sollen.
+	Es gibt verschiedene Ansätze:
+	\begin{enumerate}[leftmargin=0.3cm]
+		\item Versuche $f$ so zu ändern, dass $f$ nur noch für Punkte auf dem Rand berechnet wird. Brauchbar wenn Rand eine Gerade und sich o.B.d.A. $y$ durch $x$ ausdrücken lässt oder $x, y$ Wert konstant ist. Durch direktes einsetzen in $f$ wird $f$ also so geändert, dass es nur noch für Punkte auf dem Rand berechnet wrid. Jetzt kann wieder der gewohnte Ansatz $f' = 0$ verwendet werden! Wichtig: Prüfe am Ende ob Punkte wirklich auf Randabschnitt!
+
+		\item Verwende Ansatz mit Lagrange Multiplikator: $\nabla f = \lambda \nabla F$.\\
+		Brauchbar wenn $F$ explizit gegeben oder sich der Rand implizit als Gleichung (Bsp. Kreis) ausdrücken lässt! Um auch $\lambda$ aufzulösen verwendet man $F = 0$ als zusätzliche Gleichung! 
+		Bsp. Nebenbedingung: $\ucomment{F(x,y) = x^2 + y^2 - 1}{x^2 + y^2 = 1}$
+ 	\end{enumerate}
+ 	\textbf{Merke:} Bedingungen (x,y) sodass Jacobi Matrix nicht vollen Rang hat sind nicht reguläre Randpunkte.  
+
+ 	\item Identifizieren alle kritischen Punkte im inneren: $\nabla f = 0$. \\
+	Analog zu oben, einfach ohne Typ zu bestimmen.
+
+	\item Alle berechneten Punkte auswerten und Min/Max nehmen.
+\end{enumerate}
+\end{footnotesize}

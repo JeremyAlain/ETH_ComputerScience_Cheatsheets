@@ -1,0 +1,231 @@
+% ------------------------------------------------------------------------------------------------ %
+% TESTS
+% ------------------------------------------------------------------------------------------------ %
+
+
+\section{Tests}
+
+\subsection{Fehler 1. und 2. Art}
+
+\begin{definition}[Fehler 1. Art] Hypothese wahr aber man lehnt sie zu unrecht ab. Die Wahrscheinlichkeit für einen Fehler 1. Art ist
+$$
+\underset{H richtig}{\theta \epsilon \Theta_0} \text{und} \underset{Verwerfungsbereich}{T \epsilon K} \rightarrow \P_{\theta}[T \in K]
+\quad\text{für } \theta \in \Theta_0.
+$$
+\end{definition}
+
+\begin{definition}[Fehler 2. Art]
+Die Hypothese ist falsch aber man akteptiert sie. Die Wahrscheinlichkeit für einen Fehler 2. Art ist
+$$
+\theta \epsilon \Theta_A \text{und} T \notin K \rightarrow \P_\theta[T \notin K] =
+1 - \P_\theta[T \in K]
+\quad\text{für } \theta \in \Theta_A.
+$$
+\begin{example}[Fehler 2. Art berechnen]
+	$\P_{\theta_a}[T\notin K] = \P_{\theta_a}[\frac{\overline{x}_n -\mu_0}{\sigma/\sqrt{n}}> -2.33] = \P_{\theta_a}[\frac{\overline{X}_n-\mu_A}{\sigma/\sqrt{n}}-\frac{\mu_0-\mu_A}{\sigma/\sqrt{n}}>-2.33] = \P_{\theta_a}[\frac{\overline{X}_n - \mu_A}{\sigma/\sqrt{(n)}}>-2.33 + \frac{\mu_0-\mu_A}{\sigma/\sqrt{n}}] = 1-\phi(-2.33 +...) ]$
+\end{example}
+
+\end{definition}
+\textbf{Ziele}\\
+$\P_{a}[T\in K]$ auf $\Theta_0$:\\
+$\rightarrow$ möglichst klein. Also möglichst nicht grundlos einfach ablehnen. Sondern nur wenn man sicher ist dass die Hypothese falsch ist. \\
+$\P_{a}[T\in K]$ auf $\Theta_A$:\\
+$\rightarrow$ Wahrscheinlichkeit dass Hypothese falsch und man sie verwirft soll möglichst gross sein$\rightleftarrows \P_{\theta}[T\notin K]$für $\Theta_A$ soll also möglichst klein sein. Also Wskeit. Hypo. falsch aber man akzeptiert sie soll möglichst klein $\rightleftarrows$ Fehler 2. Art. 
+
+% ------------------------------------------------------------------------------------------------ %
+% MÖGLICHES VORGEHEN
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Mögliches Vorgehen}
+
+Ausgangspunkt ist eine Stichprobe $X_1,\ldots,X_n$ in einem Modell $\P_\theta$ mit unbekanntem Parameter $\theta \in \Theta$. $H_0$ Ist der wahre aber unbekannte Parameter $\theta$ der in der Menge $\Theta$ liegt.
+
+\begin{compactenum}[1:]
+\item
+Aufgrund einer Vermutung, wo sich der richtige Parameter $\theta$ befindet, werden eine \emph{Hypothese} $\Theta_0 \subseteq \Theta$ und eine \emph{Alternative} $\Theta_A \subseteq \Theta$ mit $\Theta_0 \cap \Theta_A = \emptyset$ formuliert:
+\begin{center}
+\vspace{1ex}
+\begin{tabular}{r@{ : }l}
+Hypothese $H_0$ & $\theta \in \Theta_0$ \\
+Alternative $H_A$ & $\theta \in \Theta_A$
+\end{tabular}
+\end{center}
+\end{compactenum}
+
+\begin{note}
+Die Hypotese (bzw. Alternative) heisst \emph{einfach}, falls sie nur aus einem einzelnen Wert besteht, also z.B. $\Theta_0 = \{\theta_0\}$ (bzw. $\Theta_A = \{\theta_A\})$.
+\end{note}
+
+\begin{compactenum}
+\setcounter{enumi}{1}
+\item
+Es wird eine \emph{Teststatistik} $T = t (X_1,\ldots,X_n)$ gewählt, wobei $t:\R^n\rightarrow\R$ eine geeignete Funktion ist.
+
+\item
+Es wird ein \emph{Signifikanzniveau} $\alpha \in (0,1)$ gewählt.
+
+\item Ein \emph{Verwerfungsbereich} $K \subseteq \R$ wird konstruiert, so dass
+$$
+\sup_{\theta \in \Theta_0} \P_\theta[T \in K] \leq \alpha.
+$$
+Dadurch wird die Wahrscheinlichkeit eines Fehlers 1. Art durch $\alpha$ beschränkt.
+
+\item
+Die Hypothese wird verworfen, falls der realisierte Wert $t(x_1,\ldots,x_n)$ im Verwerfungsbereich $K$ liegt.
+\end{compactenum}
+
+\begin{note}
+Alternative zu Schritt 4 und 5:
+Der P-Wert $p$ wird berechnet und die Hypothese verworfen, falls $p \leq \alpha$.
+\end{note}
+
+\begin{definition}[P-Wert]
+Der P-Wert ist die Wahrscheinlichkeit, dass unter der Nullhypothese $H_0$ ein zufälliger Versuch mindestens so extrem ausfällt, wie der beobachtete Wert $t$. D.h. kleinstes Niveau auf dem der Test die Nullhypothesegerae noch verwirft. Die Teststatistik des z-Test ist unter Nullhypothese, std-normalverteilt. der Test verwirft falls $T(w) = 2.0\geq c$. Je grösser c desto kleiner das Niveau des Tests. Das grösstmögliche Niveau für das der TEst noch verwirft haben wir mit c = 2.0.(Achtung dies ist der T-Wert, nicht aus der Tabelle) Das Niveau ist dazu: $\P{\theta_0}[T\geq 2] = 1 - \phi(2) \approx 1-0.97725 = 0.02275$ (Wert aus Normalverteilung Statistik.) P-Wert $= 2.275\%$
+\end{definition}
+
+\begin{definition}[Macht]
+Die \emph{Macht} eines Tests ist die Funktion
+$$
+\beta:\Theta_A\rightarrow[0,1],\quad
+\theta \mapsto\beta(\theta) := \mathbb{P}_\theta[T \in K].
+$$
+Das Maximieren der Macht $\beta(\theta)$ entspricht dem Minimieren der Wahrscheinlichkeit für einen Fehler 2. Art $1-\beta(\theta) = \mathbb{P}_\theta[T\notin K]$ für $\theta \in \Theta_A$.
+\end{definition}
+\begin{example}
+	Teststatistik, EW, Sigma gegeben. $0.9\leq \beta(\mu_A) = \P_{\mu_A}[T \in K] = \P_{\mu_A}[T \geq c] = \P_{\mu_A}[\frac{\overline{X}_n - \mu_0}{\sigma/ \sqrt(n)}\geq c] = \P_{\mu_A}[\frac{\overline{X}_n - \mu_A}{\sigma/ \sqrt(n)}-\frac{\mu_0- \mu_A}{\sigma/ \sqrt{(n)}}\ge c] = \P_{\mu_A}[\frac{\overline{X}_n - \mu_A}{\sigma/ \sqrt(n)} \ge c + \frac{\mu_0- \mu_A}{\sigma/ \sqrt{(n)}}] = 1 - \phi(c-\sqrt{n}) = \phi(-c + \sqrt{n})$
+\end{example}
+
+\begin{example}[Ausfälle]
+Erwartungsgemäss soll es 0.5 Ausfälle/h geben. Anzahl Ausfälle ist Poisson verteilt mit unbekanntem Parameter $\lambda$ und einzelne Ausfälle unabhängig voneinander. Vorgehen:
+	\begin{enumerate}
+		\item Das Modell: Unter $\P_{\theta}$ sind$X_1,...,X_6 iid \sim N(\mu, \sigma)$ mit $\mu$ und $\sigma$ unbekannt.(also t-test)
+		\item Nullhypothese $H_0: \mu = 5.8$
+		\item Alternativhypothese: $H_{A}: \mu \neq 5.8$
+		\item Teststatistik: $T:=\frac{\overline{X}_n-5.8}{S_6/\sqrt{6}}$ mit $s^2 = \frac{1}{n-1} \sum ...$
+		\item Verteilung der Teststatistik unter $H_0$: T ist unter $H_0$ t-verteilt mit 5 Freiheitsgraden.
+		\item Verwerfungsbereich: Der Verwerfungsbereich hat Form $K = [-\infty,c]$. Damit er das 1 $\%$ Niveau einhält muss man für c das $\alpha$-Quantil der $t_8$ Verteilung wählen. Wegen Symmetrie der Dichte gilt $t_{5,\alpha} = -t_{5,1-\alpha} = t_{5,0.95} = 4.032$ sprich $-4.032$. Somit ist K = $[-\infty, 4.032]$. Auf dem $1\%$ Niveau wird die Nullhypo. genau dann verworfen, wenn |T|$\ge 4.032$ (Schaue in Tabelle bei $t_{0.995}$bei df = 5)
+		\item Beobachteter Wert der Teststatistik: Aus den Daten ergibt sich $\overline{x}_6 = 5.602$ und $s_6 = 02288$ also |t| = 2.12
+		\item Testentscheid: Da |t|$\leq 4.032$ wird $H_0$ nicht verworfen. 
+	\end{enumerate}
+
+\end{example}
+% ------------------------------------------------------------------------------------------------ %
+% LIKELIHOOD QUOTIENT
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{Likelihood-Quotienten Test}
+
+Als Teststatistik wird der \emph{Likelihood-Quotient} $\mathcal{R}$ gewählt, wobei $\mathcal{L}$ die Likelihood-Funktion ist:
+$$
+T :=
+\mathcal{R}(x_1,\ldots,x_n) :=
+\frac
+  {\displaystyle\sup_{\theta\in\Theta_0}\mathcal{L}(x_1,\ldots,x_n \mid \theta)}
+  {\displaystyle\sup_{\theta\in\Theta_A}\mathcal{L}(x_1,\ldots,x_n \mid \theta)}
+$$
+Ist dieser Quotient klein, sind die Beobachtungen im Modell $\P_{\Theta_A}$ deutlich wahrscheinlicher als im Modell $\P_{\Theta_0}$. Der Verwerfungsbereich $K := [0,c)$ wird so gewählt, dass der Test das gewünschte Signifikanzniveau einhält.
+
+\begin{note}
+Sind Hypothese und Alternative beide einfach, so ist der Test optimal (nach Neyman-Pearson-Lemma).
+\end{note}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% Z-TEST
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{z-Test}
+
+%Normalverteilung, Test für Erwartungswert bei bekannter Varianz:
+\textbf{ACHTUNG:} Empirisches Stichprobenmittel $\neq$ EW und empirische Stichprobenstandardabweichung $\neq Var^2$.\\
+Seien $X_1,\ldots,X_n \overset{i.i.d.}{\sim} \mathcal{N}(\theta_0,\sigma^2)$ unter $\P_{\theta_0}$ mit \emph{bekannter} Varianz $\sigma^2$. Es soll die Hypothese $H_0: \theta = \theta_0$ getestet werden. Mögliche Alternativen $H_A$ sind $\theta > \theta_0$, $\theta < \theta_0$ (einseitig) oder $\theta \neq \theta_0$ (zweiseitig). Die Teststatistik ist
+$$
+T := \frac{\overline{X}_n - \theta_0}{\sigma_X / \sqrt{n}} \sim \mathcal{N}(0,1)
+$$
+unter dem Modell $\P_{\theta_0}$.  Der Verwerfungsbereich ist von der Form $(c_>,\infty)$, bzw. $(-\infty,c_<)$, bzw. $(-\infty,-c_{\neq})\cup(c_{\neq},\infty)$. Zum Beispiel liefert die Bedingung
+$$
+\alpha =
+\P_{\theta_0}[T \in K_>] =
+\P_{\theta_0}[T > c_>] =
+1- \Phi(c_>),
+$$
+dass $c_> = \Phi^{-1}(1-\alpha)$, also das $(1-\alpha)$-Quantil der $\mathcal{N}(0,1)$-Verteilung, sein muss; für $\theta > \theta_0$ verwirft man also $H_0$ falls $\overline{X}_n>\theta_0 + z_{1-\alpha}\frac{\sigma}{\sqrt{n}}$.\\ 
+Vorgehen für $c_{\le}$ \& $c_{\neq}$: \\
+Bei t-test für $\neq$ gilt: $K_\alpha = (-\infty, -t_{n-1},1-\frac{\alpha}{2})\Cup (t_{n-1},1-\frac{\alpha}{2},\infty)$ wobei $t_{n-1},1-\frac{\alpha}{2}$ das $(1-\frac{\alpha}{2})$-Quantil der t-Verteilung mit n-1 Freiheitsgraden ist. 
+Bei z-Test für $c_{\le} = z_{\alpha} = -z_{1-\alpha}$ und $c_{\neq} = z_{1-\frac{\alpha}{2}}$\\
+$\alpha = \P_{\theta_0}[T \epsilon K_{\neq}] = \P_{\theta_0}[T \le -c_{\neq}] + \P_{\theta_0}[T\ge c_{\neq}] = \phi(-c_{\neq})+1 - \phi(c_{\neq}) = 2(1-\phi(c_{\neq}))$
+\begin{example}
+	Strausseneier: $5\%$ Niveau $\rightarrow z_{1-\alpha} = z_{0.95} = 1.654 \rightarrow $ falls $T > 1.645 \rightarrow $verwirf.\\
+	Gegenteil: $z_a = z_{0.05} = -z_{0.095} ) -1.645 \rightarrow -2-25 > -1.645 \rightarrow$ also verwirf. Schaue immer in t-Tabelle für df = $\infty$ nach. 
+\end{example}
+
+% ------------------------------------------------------------------------------------------------ %
+% T-TEST
+% ------------------------------------------------------------------------------------------------ %
+
+
+\subsection{t-Test}
+
+%Normalverteilung, Test für Erwartungswert bei unbekannter Varianz:
+Seien $X_1,\ldots,X_n \overset{\text{i.i.d.}}{\sim} \mathcal{N}(\mu_0,\sigma^2)$ unter $\P_\theta$ wobei $\theta = (\mu,\sigma^2)$ und insbesondere die Varianz $\sigma^2$ \emph{unbekannt} ist. Die Hypothese $H_0: \mu = \mu_0$ soll getestet werden.
+Die unbekannte Varianz $\sigma^2$ wird durch den Schätzer $s^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i-\overline{X})^2$ (empirische Varianz) ersetzt. Danach kann mit der Teststatistik
+$$
+T := \frac{\overline{X}_n - \mu_0}{s / \sqrt{n}} \sim t_{n-1}
+$$
+gleich wie beim z-Test vorgegangen werden.
+
+
+% ------------------------------------------------------------------------------------------------ %
+% GEPAARTE ZWEISTICHPROBEN TESTS
+% ------------------------------------------------------------------------------------------------ %
+\scriptsize
+
+\textbf{Gepaarter Zweistichprobentest(z/t - Test)}
+
+Seien $X_{1\leq i \leq n} \overset{\text{i.i.d.}}{\sim} \mathcal{N}(\mu_X,\sigma^2)$ und $Y_{1\leq i \leq n} \overset{\text{i.i.d.}}{\sim} \mathcal{N}(\mu_Y,\sigma^2)$ unter $\P_\theta$. Falls man eine natürliche Paarbildung zwischen $X_i$ und $Y_i$ hat, lässt der Test zum Vergleich von $\mu_X$ und $\mu_Y$ auf eine Stichprobe zurückführen:
+$$
+Z_i := X_i - Y_i
+\overset{\text{i.i.d.}}{\sim}
+\mathcal{N}(\mu_x-\mu_y,2\sigma^2)
+$$
+
+\textbf{Ungepaarter Zweistichprobentest}
+
+Seien $X_{1\leq i \leq n} \overset{\text{i.i.d.}}{\sim} \mathcal{N}(\mu_X,\sigma^2)$ und $Y_{1\leq i \leq m} \overset{\text{i.i.d.}}{\sim} \mathcal{N}(\mu_Y,\sigma^2)$ unter $\P_\theta$.
+
+\begin{compactenum}[\bf a)]
+\item
+	Ist $\sigma^2$ bekannt, so ist die Teststatistik
+	$$
+	T := \frac{(\overline{X}_n-\overline{Y}_m)-(\mu_X-\mu_Y)}{\sigma\sqrt{\frac{1}{n}+\frac{1}{m}}} \sim \mathcal{N}(0,1).
+	$$
+\item
+	Ist $\sigma^2$ unbekannt, berechnet man
+	$$
+	s^2 := \frac{1}{m+n-2}((n-1)s_X^2+(m-1)s_Y^2)
+	$$
+	und wählt für die Teststatistik
+	$$
+	T := \frac{(\overline{X}_n-\overline{Y}_m)-(\mu_X-\mu_Y)}{s\sqrt{\frac{1}{n}+\frac{1}{m}}} \sim t_{n+m-2}
+	$$
+\end{compactenum}
+
+
+% ------------------------------------------------------------------------------------------------ %
+% VERTRAUENSINTERVALL
+% ------------------------------------------------------------------------------------------------ %
+
+
+
+
+\begin{definition}[Konfidenzbereich]
+Ein \emph{Konfidenzbereich} für $\theta$ zu den Stichproben $X_1,\ldots,X_n$ ist eine Menge $C(X_1,\ldots,X_n) \subseteq \Theta$. In den meisten Fällen ist das ein Intervall, dessen Endpunkte von $X_1,\ldots,X_n$ abhängen.
+
+$C$ heisst ein Konfidenzbereich zum \emph{Niveau} $1-\alpha$, falls gilt
+$$
+\P_\theta[\theta \in C(X_1,\ldots,X_n)] \geq 1-\alpha
+$$
+\end{definition}
